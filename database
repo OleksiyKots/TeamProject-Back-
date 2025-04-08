@@ -1,0 +1,59 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE User (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL
+);
+
+CREATE TABLE Category (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE Product (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    description TEXT,
+    category_id INTEGER,
+    stock INTEGER NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Category(id) ON DELETE SET NULL
+);
+
+CREATE TABLE Discount (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id INTEGER,
+    discount_percent REAL NOT NULL,
+    start_date TEXT NOT NULL, -- SQLite використовує TEXT для збереження дат
+    end_date TEXT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Cart (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    product_id INTEGER,
+    quantity INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE
+);
+
+CREATE TABLE "Order" (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    order_date TEXT NOT NULL,
+    status TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Order_Items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER,
+    product_id INTEGER,
+    quantity INTEGER NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES "Order"(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE
+);
