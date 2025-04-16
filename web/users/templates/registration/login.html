@@ -1,0 +1,7 @@
+<h2>Вхід</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Увійти</button>
+</form>
+<a href="{% url 'password_reset' %}">Забули пароль?</a>
