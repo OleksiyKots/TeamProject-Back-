@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна</title>
+    <style>
+        .category-list { display: none; }
+        .category-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <button onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
+
+    <div id="categoryList" class="category-list">
+        {% for category in categories %}
+            <div class="category-item">
+                <a href="{% url 'category_detail' category.slug %}">
+                    {{ category.name }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <script>
+        function toggleCategories() {
+            const list = document.getElementById("categoryList");
+            list.style.display = list.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
