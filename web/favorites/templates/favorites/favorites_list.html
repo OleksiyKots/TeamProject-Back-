@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Моє обране{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Обране ❤️</h1>
+    <div id="favorites-list" class="row">
+        <!-- Тут будуть підвантажуватись елементи -->
+    </div>
+    <div id="alert" class="alert alert-info mt-4" style="display:none;"></div>
+</div>
+
+<script>
+// Витяг CSRF токену з cookie
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+// Коли сторінка завантажилась
+document.addEventListener('DOMContentLoaded', function() {
+    fetchFavorites();
+});
+
+// Функція для отримання обраного
+function fetchFavorites() {
+    fetch('/favorites/api/')
+    .then(response => response.json())
+    .then(data => {
+        const favoritesList = document.getElementById('favorites-list');
+        favoritesList.innerHTML = '';
+
+        if (data.length === 0) {
+            favoritesList.innerHTML = '<p>У вас поки що немає обраних елементів.</p>';
+        } else {
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'col-md-4 mb-3';
+                div.innerHTML = `
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h5 class="card-title">Елемент №${item.item_id}</h5>
+                            <button class="btn btn-danger mt-3" onclick="removeFavorite(${item.item_id})">Видалити</button>
+                        </div>
+                    </div>
+                `;
+                favoritesList.appendChild(div);
+            });
+        }
+    })
+    .catch(error => {
+        showAlert('Помилка при отриманні обраного!', 'danger');
+        console.error('Помилка при отриманні обраного:', error);
+    });
+}
+
+// Функція для видалення з обраного
+function removeFavorite(itemId) {
+    fetch(`/favorites/api/remove/${itemId}/`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            showAlert('Елемент видалено з обраного!', 'success');
+            fetchFavorites();
+        } else {
+            showAlert('Помилка при видаленні!', 'danger');
+            console.error('Помилка при видаленні');
+        }
+    });
+}
+
+// Функція для відображення повідомлень
+function showAlert(message, type) {
+    const alertDiv = document.getElementById('alert');
+    alertDiv.className = `alert alert-${type} mt-4`;
+    alertDiv.innerText = message;
+    alertDiv.style.display = 'block';
+    setTimeout(() => {
+        alertDiv.style.display = 'none';
+    }, 3000);
+}
+</script>
+{% endblock %}

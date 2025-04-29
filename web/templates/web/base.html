@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AtletiQ{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body style="background-color: #ffffff;">
+
+    <header style="position: relative; height: 60px; border-bottom: 1px solid #ccc;">
+        <!-- Назва сайту ліворуч -->
+        <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%);">
+            <a href="{% url 'home' %}" style="text-decoration: none; font-weight: bold; font-size: 24px; color: black;">
+                AtletiQ
+            </a>
+        </div>
+    
+        <!-- Кнопки справа -->
+        <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); display: flex; gap: 10px;">
+            
+            <button id="favorites-button" type="button">❤️ </button>
+    
+            {% if user.is_authenticated %}
+                {% if request.path != '/user/' %}
+                    <a href="{% url 'user' %}">👤 </a>
+                {% else %}
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">Вийти</button>
+                    </form>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'login' %}">👤 </a>
+            {% endif %}
+        </div>
+    </header>
+    
+
+<main style="padding: 20px;">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer style="text-align: center; padding: 20px; border-top: 1px solid #ccc;">
+    &copy; 2025 AtletiQ
+</footer>
+
+<!-- Спочатку передаємо статус авторизації -->
+<script>
+    const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
+</script>
+
+<!-- Потім вішаємо обробку кліку -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const favoritesButton = document.getElementById('favorites-button');
+
+    favoritesButton.addEventListener('click', function() {
+        if (isAuthenticated === "true") {
+            window.location.href = "{% url 'favorites_list' %}";
+        } else {
+            if (confirm("Щоб додати в обране, потрібно увійти або зареєструватися.\n\nНатисніть OK для переходу на сторінку входу.")) {
+                window.location.href = "{% url 'login' %}";
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,8 +1,14 @@
-{% extends 'main/layout.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %} Користувач {% endblock %}
-
-{% block content %} 
-<h1>Сторінка користувача</h1>
-<p>Сторінка користувача</p>
+{% block title %}
+    Користувач
 {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Сторінка користувача</h1>
+    <p>Вітаємо на вашій персональній сторінці!</p>
+</div>
+{% endblock %}
+

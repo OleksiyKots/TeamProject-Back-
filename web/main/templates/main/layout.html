@@ -1,17 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>{% block title %}Мій сайт{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 </head>
 <body>
-    {% block content %} 
-    
+
+<header class="p-3 mb-4 border-bottom bg-light">
+    <div class="container d-flex flex-wrap justify-content-center">
+        <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="fs-4">Мій сайт</span>
+        </a>
+
+        <ul class="nav nav-pills">
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'favorites_list' %}" class="nav-link">Обране ❤️</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Вийти</a></li>
+            {% else %}
+                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Увійти</a></li>
+                <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Реєстрація</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</header>
+
+<main class="container">
+    {% block content %}
     {% endblock %}
+</main>
+
+<footer class="text-center p-3 mt-4 border-top">
+    &copy; 2024 Мій крутий сайт
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkdybP8O4PZrK+FfN6t3RQ9sxjLRxY2tw1F0Mi/5C54eWc0WGFM4" crossorigin="anonymous"></script>
+
 </body>
 </html>
+

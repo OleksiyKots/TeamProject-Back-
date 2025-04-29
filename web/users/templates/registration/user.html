@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Мій профіль
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Профіль користувача</h1>
+    <p><strong>Ім'я користувача:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+</div>
+{% endblock %}

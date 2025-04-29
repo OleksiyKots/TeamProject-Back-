@@ -1,7 +1,18 @@
-<h2>Реєстрація</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Зареєструватися</button>
-</form>
-<a href="{% url 'login' %}">Увійти</a>
+{% extends "base.html" %}
+{% block title %}Реєстрація{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto;">
+    <h2>Реєстрація</h2>
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Зареєструватися</button>
+    </form>
+
+    <p style="margin-top: 10px;">
+        Уже маєте акаунт? <a href="{% url 'login' %}">Увійти</a>
+    </p>
+</div>
+{% endblock %}

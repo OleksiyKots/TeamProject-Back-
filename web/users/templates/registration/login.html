@@ -1,7 +1,18 @@
-<h2>Вхід</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Увійти</button>
-</form>
-<a href="{% url 'password_reset' %}">Забули пароль?</a>
+{% extends "base.html" %}
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto;">
+    <h2>Вхід</h2>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Увійти</button>
+    </form>
+
+    <p style="margin-top: 10px;">
+        Ще не маєте акаунта? <a href="{% url 'register' %}">Реєстрація</a>
+    </p>
+</div>
+{% endblock %}
