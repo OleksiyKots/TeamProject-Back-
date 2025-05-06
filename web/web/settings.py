@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-pri$nv_n!=bjy8!!w3qz_gemgqg(o+-)ya1)pi855_w+uhd813
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "remotely-cool-eel.ngrok-free.app",
+]
 
 # Application definition
 
@@ -42,6 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    'django.contrib.sites', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.apple',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'web.urls'
@@ -138,3 +150,29 @@ REST_FRAMEWORK = {
 }
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/user/'
+SITE_ID = 2
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGIN_METHODS = {"email"}  # логін виключно за email
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]  # поля на формі реєстрації
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_UNIQUE_EMAIL = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+MIDDLEWARE += ['django.contrib.messages.middleware.MessageMiddleware']
+
+TEMPLATES[0]['OPTIONS']['context_processors'] += [
+    'django.contrib.messages.context_processors.messages',
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://remotely-cool-eel.ngrok-free.app"
+]

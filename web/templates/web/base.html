@@ -18,23 +18,30 @@
         </div>
     
         <!-- Кнопки справа -->
-        <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); display: flex; gap: 10px;">
-            
-            <button id="favorites-button" type="button">❤️ </button>
-    
-            {% if user.is_authenticated %}
-                {% if request.path != '/user/' %}
-                    <a href="{% url 'user' %}">👤 </a>
-                {% else %}
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit">Вийти</button>
-                    </form>
-                {% endif %}
-            {% else %}
-                <a href="{% url 'login' %}">👤 </a>
-            {% endif %}
-        </div>
+        <!-- Кнопки справа -->
+<div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); display: flex; gap: 10px;">
+
+    <button id="favorites-button" type="button">❤️</button>
+
+    <!-- Перевірка на автентифікацію -->
+    {% if user.is_authenticated %}
+        {% if request.path == '/user/' %}
+            <!-- Якщо ми на сторінці профілю -->
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Вийти</button>
+            </form>
+        {% else %}
+            <!-- Якщо ми не на профілі -->
+            <a href="{% url 'user' %}">👤</a>
+        {% endif %}
+    {% else %}
+        <!-- Якщо користувач не авторизований -->
+        <a href="{% url 'login' %}">👤</a>
+    {% endif %}
+
+</div>
+
     </header>
     
 
@@ -51,8 +58,6 @@
 <script>
     const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 </script>
-
-<!-- Потім вішаємо обробку кліку -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const favoritesButton = document.getElementById('favorites-button');

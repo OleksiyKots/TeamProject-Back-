@@ -24,17 +24,17 @@
             <button id="favorites-button" type="button">❤️</button>
     
             {% if user.is_authenticated %}
-                {% if request.path != '/user/' %}
-                    <a href="{% url 'user' %}">👤</a>
-                {% else %}
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit">Вийти</button>
-                    </form>
-                {% endif %}
-            {% else %}
-                <a href="{% url 'login' %}">👤</a>
-            {% endif %}
+                 {% if request.path != '/user/' %}
+                     <a href="{% url 'user' %}">👤</a>
+                 {% else %}
+                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                         {% csrf_token %}
+                         <button type="submit">Вийти</button>
+                     </form>
+                 {% endif %}
+             {% else %}
+                 <a href="{% url 'login' %}">👤</a>
+             {% endif %}
         </div>
     </header>
     

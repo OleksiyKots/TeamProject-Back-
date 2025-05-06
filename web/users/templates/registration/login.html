@@ -1,18 +1,39 @@
 {% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+
 {% block title %}Вхід{% endblock %}
 
 {% block content %}
 <div style="max-width: 400px; margin: 50px auto;">
     <h2>Вхід</h2>
+
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-
         <button type="submit">Увійти</button>
     </form>
 
     <p style="margin-top: 10px;">
         Ще не маєте акаунта? <a href="{% url 'register' %}">Реєстрація</a>
     </p>
+
+    <hr style="margin: 30px 0;">
+
+    <p style="text-align: center; font-weight: bold;">Або увійдіть через:</p>
+
+    <div style="display: flex; justify-content: center; gap: 10px;">
+        <a href="{% provider_login_url 'facebook' process='login' %}" style="
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        ">
+            Увійти через Facebook
+        </a>
+    </div>
 </div>
 {% endblock %}
+

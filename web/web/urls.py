@@ -10,9 +10,11 @@ class MyLogoutView(LogoutView):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('favorites/', include('favorites.urls')),
+    path('api/users/', include('users.urls')),
     path('',include('main.urls')),
     path('prdct/',include('prdct.urls')),
      path('', include('users.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
     path('logout/', MyLogoutView.as_view(), name='logout'),
+    path('accounts/', include('allauth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
