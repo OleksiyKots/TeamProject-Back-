@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Домашня сторінка — AtletiQ{% endblock %}
+
+{% block content %}
+<div style="position: relative;">
+    <button onclick="toggleFilters()" class="filters-button">Фільтри ⬇</button>
+    <div id="filters-panel" class="filters-panel" style="display: none;">
+        <form method="get" action="{% url 'home' %}">
+            <label for="category">Категорія:</label>
+            <select name="category" id="category">
+                <option value="">Всі</option>
+                {% for cat in categories %}
+                    <option value="{{ cat.slug }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>            
+            <button type="submit" class="apply-button">Застосувати</button>
+        </form>
+    </div>
+</div>
+
+<!-- Тут можуть бути товари або контент -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function toggleFilters() {
+        const panel = document.getElementById("filters-panel");
+        panel.style.display = panel.style.display === "none" ? "block" : "none";
+    }
+</script>
+{% endblock %}

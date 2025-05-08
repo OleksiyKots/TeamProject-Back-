@@ -8,6 +8,7 @@
     <title>{% block title %}AtletiQ{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 </head>
+
 <body style="background-color: #ffffff;">
 
     <header style="position: relative; height: 60px; border-bottom: 1px solid #ccc;">
@@ -53,7 +54,7 @@
     const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 </script>
 
-<!-- Потім вішаємо обробку кліку -->
+{% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const favoritesButton = document.getElementById('favorites-button');
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+{% endblock %}
 
 </body>
 </html>

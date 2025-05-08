@@ -164,10 +164,10 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_UNIQUE_EMAIL = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False
+
+
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 MIDDLEWARE += ['django.contrib.messages.middleware.MessageMiddleware']
 
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
@@ -176,3 +176,8 @@ TEMPLATES[0]['OPTIONS']['context_processors'] += [
 CSRF_TRUSTED_ORIGINS = [
     "https://remotely-cool-eel.ngrok-free.app"
 ]
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['public_profile'],  # без email
+    }
+}

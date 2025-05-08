@@ -1,11 +1,18 @@
 from django.db import models
 
-# Create your models here.
-class prdct(models.Model):
-    product = models.CharField("Назва товару",max_length=100, unique=True)
-    price = models.CharField("Ціна товару" , max_length=100)
-    type = models.EmailField("Категорія товару", max_length=100)
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
 
-    class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товари"
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    # інші поля…
+
+    def __str__(self):
+        return self.name

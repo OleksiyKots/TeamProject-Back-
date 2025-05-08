@@ -54,7 +54,8 @@
     &copy; 2025 AtletiQ
 </footer>
 
-<!-- Спочатку передаємо статус авторизації -->
+{% block scripts %}
+
 <script>
     const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 </script>
@@ -72,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-</script>
 
+</script>
+{% endblock %}
 </body>
 </html>

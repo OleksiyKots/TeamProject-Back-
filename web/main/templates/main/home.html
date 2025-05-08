@@ -1,16 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-    Головна
-{% endblock %}
+{% block title %}Головна — AtletiQ{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
+    
+    <!-- Кнопки -->
+    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <button class="btn btn-secondary" onclick="toggleFilters()">Фільтри ⬇</button>
+        <button class="btn btn-outline-primary" onclick="toggleCategories()">УСІ КАТЕГОРІЇ ⬇</button>
+    </div>
+    <p>Категорій у базі: {{ categories|length }}</p>
 
-    <button class="btn btn-primary mb-4" onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
+    <ul>
+      {% for cat in categories %}
+        <li>{{ cat.name }} ({{ cat.slug }})</li>
+      {% endfor %}
+    </ul>
+    
+    <!-- Меню Фільтрів -->
+    <div id="filters-panel" style="display: none; border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+        <form method="get" action="{% url 'home' %}">
+            <div class="mb-3">
+                <label for="category">Категорія:</label>
+                <select name="category" id="category">
+                    <option value="">Всі</option>
+                    {% for cat in categories %}
+                        <option value="{{ cat.slug }}"{% if request.GET.category = "{{ cat.slug }}" %}selected{% endif %}>{{ cat.name }}</option>
+                    {% endfor %}
+                </select>                
+            </div>
 
-    <div id="categoryList" style="display: none; display: block; flex-direction: column;">
+            <div class="mb-3">
+                <label for="price_min">Мін. ціна:</label>
+                <input type="number" name="price_min" id="price_min" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="price_max">Макс. ціна:</label>
+                <input type="number" name="price_max" id="price_max" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success">Застосувати</button>
+        </form>
+    </div>
+
+    <!-- Список Категорій -->
+    <div id="categoryList" style="display: none;">
         {% for category in categories %}
             <div style="margin-bottom: 10px;">
                 <a href="{% url 'category_detail' category.slug %}" class="btn btn-outline-primary w-100 text-start">
@@ -19,17 +56,27 @@
             </div>
         {% endfor %}
     </div>
-</div>
 
+</div>
+{% endblock %}
+
+{% block scripts %}
 <script>
-    function toggleCategories() {
-        const list = document.getElementById("categoryList");
-        if (list.style.display === "none" || list.style.display === "") {
-            list.style.display = "block";  // показати як стовпчик
-        } else {
-            list.style.display = "none";   // приховати
-        }
+    function toggleElementDisplay(id) {
+        const el = document.getElementById(id);
+        const isHidden = window.getComputedStyle(el).display === "none";
+        el.style.display = isHidden ? "block" : "none";
     }
+
+    function toggleFilters() {
+        toggleElementDisplay("filters-panel");
+    }
+
+    function toggleCategories() {
+        toggleElementDisplay("categoryList");
+    }
+console.log("Скрипт підключився успішно");
+
 </script>
 {% endblock %}
 
