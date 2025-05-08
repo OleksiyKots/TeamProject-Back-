@@ -18,9 +18,6 @@ def home(request):
         products = products.filter(price__gte=min_price)
     if max_price:
         products = products.filter(price__lte=max_price)
-
-    categories = Category.objects.all()
-
     return render(request, 'main/home.html', {
         'products': products,
         'categories': Category.objects.all()

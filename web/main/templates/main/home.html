@@ -9,16 +9,10 @@
     <!-- Кнопки -->
     <div style="display: flex; gap: 10px; margin-bottom: 20px;">
         <button class="btn btn-secondary" onclick="toggleFilters()">Фільтри ⬇</button>
-        <button class="btn btn-outline-primary" onclick="toggleCategories()">УСІ КАТЕГОРІЇ ⬇</button>
+        <button class="btn btn-primary mb-4" onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
     </div>
-    <p>Категорій у базі: {{ categories|length }}</p>
 
-    <ul>
-      {% for cat in categories %}
-        <li>{{ cat.name }} ({{ cat.slug }})</li>
-      {% endfor %}
-    </ul>
-    
+   
     <!-- Меню Фільтрів -->
     <div id="filters-panel" style="display: none; border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
         <form method="get" action="{% url 'home' %}">
@@ -27,7 +21,7 @@
                 <select name="category" id="category">
                     <option value="">Всі</option>
                     {% for cat in categories %}
-                        <option value="{{ cat.slug }}"{% if request.GET.category = "{{ cat.slug }}" %}selected{% endif %}>{{ cat.name }}</option>
+                        <option value="{{ cat.slug }}">{{ cat.name }}</option>
                     {% endfor %}
                 </select>                
             </div>

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.apple',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -164,10 +165,13 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_UNIQUE_EMAIL = True
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = DEBUG  # автоматично вмикає тільки у продакшні
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 MIDDLEWARE += ['django.contrib.messages.middleware.MessageMiddleware']
 
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
@@ -179,5 +183,17 @@ CSRF_TRUSTED_ORIGINS = [
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'SCOPE': ['public_profile'],  # без email
+    }
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    }
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'apple': {
+        'SCOPE': ['name', 'email'],
+        'AUTH_PARAMS': {'response_mode': 'form_post'},
     }
 }
