@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} — AtletiQ{% endblock %}
+
+{% block content %}
+    <h2>{{ category.name }}</h2>
+    <button onclick="toggleFilters()">Фільтри ⬇</button>
+    <div id="filters-panel" style="display:none;">
+        <form method="get">
+            {{ filter.form.as_p }}
+            <button type="submit">Застосувати фільтри</button>
+        </form>
+    </div>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> — {{ product.price }} грн
+                <br>Виробник: {{ product.manufacturer }}
+                <br>Вага: {{ product.weight }} г
+            </li>
+        {% empty %}
+            <li>Товарів не знайдено.</li>
+        {% endfor %}
+    </ul>
+    <script>
+        function toggleFilters() {
+            const panel = document.getElementById('filters-panel');
+            panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
+{% endblock %}

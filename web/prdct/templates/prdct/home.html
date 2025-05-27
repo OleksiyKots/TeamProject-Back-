@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Головна — AtletiQ{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    
+    <!-- Кнопки -->
+    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <button class="btn btn-primary mb-4" onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
+    </div>
+
+    <!-- Список Категорій -->
+    <div id="categoryList" style="display: none;">
+        {% for category in categories %}
+            <div style="margin-bottom: 10px;">
+                <a href="{% url 'category_detail' category.slug %}" class="btn btn-outline-primary w-100 text-start">
+                    {{ category.name }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function toggleElementDisplay(id) {
+        const el = document.getElementById(id);
+        const isHidden = window.getComputedStyle(el).display === "none";
+        el.style.display = isHidden ? "block" : "none";
+    }
+
+    function toggleFilters() {
+        toggleElementDisplay("filters-panel");
+    }
+
+    function toggleCategories() {
+        toggleElementDisplay("categoryList");
+    }
+console.log("Скрипт підключився успішно");
+
+</script>
+{% endblock %}
+
+

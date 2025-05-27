@@ -1,2 +1,11 @@
-<h2>Ти вийшов з акаунту.</h2>
-<a href="{% url 'login' %}">Увійти знову</a>
+{% extends "base.html" %}
+
+{% block title %}Вихід{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; text-align: center;">
+    <h2>Ви вийшли з акаунта.</h2>
+    <p>Увійти знову можна через застосунок або клієнтський інтерфейс.</p>
+</div>
+{% endblock %}
+

@@ -1,24 +1,75 @@
-<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-    <a href="{% provider_login_url 'facebook' process='signup' %}" style="
-        background-color: #1877f2;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    ">
-        Facebook
-    </a>
+{% extends "base.html" %}
+{% load static %}
 
-    <a href="{% provider_login_url 'google' process='signup' %}" style="
-        background-color: #db4437;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    ">
-        Google
-    </a>
+{% block title %}Реєстрація{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 50px auto;">
+    <h2 style="text-align: center;">Реєстрація</h2>
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        
+        {{ form.non_field_errors }}
+
+        {% if form.email %}
+        <div class="mb-3">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        {% endif %}
+
+        {% if form.full_name %}
+        <div class="mb-3">
+            <label for="{{ form.full_name.id_for_label }}">Повне ім’я:</label>
+            {{ form.full_name }}
+            {{ form.full_name.errors }}
+        </div>
+        {% endif %}
+
+        {% if form.phone %}
+        <div class="mb-3">
+            <label for="{{ form.phone.id_for_label }}">Номер телефону:</label>
+            {{ form.phone }}
+            {{ form.phone.errors }}
+        </div>
+        {% endif %}
+
+        {% if form.password1 %}
+        <div class="mb-3">
+            <label for="{{ form.password1.id_for_label }}">Пароль:</label>
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        {% endif %}
+
+        {% if form.password2 %}
+        <div class="mb-3">
+            <label for="{{ form.password2.id_for_label }}">Повторіть пароль:</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary w-100">Зареєструватися</button>
+    </form>
 </div>
+{% endblock %}
+
 

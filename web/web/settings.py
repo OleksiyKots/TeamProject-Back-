@@ -34,7 +34,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'users',
     'main',
     'prdct',
     'favorites',
@@ -48,11 +47,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.sites', 
     'allauth',
+    'django_filters',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.apple',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -147,22 +150,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/user/'
+LOGIN_REDIRECT_URL = '/users/profile/'
 SITE_ID = 2
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGIN_METHODS = {"email"}  # логін виключно за email
-ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]  # поля на формі реєстрації
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
-ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_UNIQUE_EMAIL = True
 SECURE_SSL_REDIRECT = DEBUG  # автоматично вмикає тільки у продакшні
@@ -170,6 +169,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # або 'optional'
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 MIDDLEWARE += ['django.contrib.messages.middleware.MessageMiddleware']
@@ -177,23 +180,60 @@ MIDDLEWARE += ['django.contrib.messages.middleware.MessageMiddleware']
 TEMPLATES[0]['OPTIONS']['context_processors'] += [
     'django.contrib.messages.context_processors.messages',
 ]
-CSRF_TRUSTED_ORIGINS = [
-    "https://remotely-cool-eel.ngrok-free.app"
-]
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
-        'SCOPE': ['public_profile'],  # без email
-    }
-}
-SOCIALACCOUNT_PROVIDERS = {
+        'SCOPE': ['public_profile'],
+        'FIELDS': ['id', 'name', 'email'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': False,
+    },
     'google': {
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
-    }
-}
-SOCIALACCOUNT_PROVIDERS = {
+    },
     'apple': {
         'SCOPE': ['name', 'email'],
         'AUTH_PARAMS': {'response_mode': 'form_post'},
-    }
+    },
 }
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",      # React dev server
+]
+
+# або для локальної розробки
+CORS_ALLOW_ALL_ORIGINS = True  # ⚠ лише для тестів!
+AUTH_USER_MODEL = 'users.CustomUser'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+
+ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://remotely-cool-eel.ngrok-free.app",
+    "http://localhost:3000",
+]
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+SOCIALACCOUNT_ADAPTER = 'users.socialaccount_adapter.CustomSocialAccountAdapter'
+ACCOUNT_STAGES = {
+    "login": {
+        "include": ["allauth.account.stages.LoginStage"],
+    },
+    "signup": {
+        "include": [
+            "allauth.account.stages.SignupStage",
+        ],
+    },
+}
+ACCOUNT_SIGNUP_FORM_CLASS = "users.signup_form.CustomSignupForm"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
+ACCOUNT_LOGIN_BY_EMAIL = True
+SOCIALACCOUNT_LOGIN_ON_GET = False
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'     # або 'optional' / 'mandatory' за потребою
+ACCOUNT_UNIQUE_EMAIL              = True
+ACCOUNT_SIGNUP_FIELDS    = ['email*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = {'email'}

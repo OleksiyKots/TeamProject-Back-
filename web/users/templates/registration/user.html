@@ -6,9 +6,46 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>Профіль користувача</h1>
-    <p><strong>Ім'я користувача:</strong> {{ user.username }}</p>
+<div class="container mt-5" style="max-width: 600px; margin: auto;">
+    <h1 class="mb-4">Ваш профіль</h1>
+
+    <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <form method="post" action="{% url 'logout' %}" style="margin-top: 20px;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Вийти</button>
+    </form>
+
+    <hr class="my-4">
+
+    <p class="text-muted">Ця сторінка лише відображає інформацію, отриману через сесію Django. У продакшн-версії фронтенд отримуватиме ці дані через API.</p>
+
+    <hr class="my-4">
+
+    <h4>Підключити соцмережі:</h4>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="{% provider_login_url 'facebook' process='connect' %}" class="btn btn-primary">
+            Підключити Facebook
+        </a>
+        <a href="{% provider_login_url 'google' process='connect' %}" class="btn btn-danger">
+            Підключити Google
+        </a>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <h5>Підключені акаунти:</h5>
+        {% if user.socialaccount_set.exists %}
+            <ul>
+                {% for account in user.socialaccount_set.all %}
+                    <li>{{ account.provider|capfirst }} — ID: {{ account.uid }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">Соціальні акаунти ще не підключено.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
+
+

@@ -8,36 +8,7 @@
     
     <!-- Кнопки -->
     <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <button class="btn btn-secondary" onclick="toggleFilters()">Фільтри ⬇</button>
         <button class="btn btn-primary mb-4" onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
-    </div>
-
-   
-    <!-- Меню Фільтрів -->
-    <div id="filters-panel" style="display: none; border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
-        <form method="get" action="{% url 'home' %}">
-            <div class="mb-3">
-                <label for="category">Категорія:</label>
-                <select name="category" id="category">
-                    <option value="">Всі</option>
-                    {% for cat in categories %}
-                        <option value="{{ cat.slug }}">{{ cat.name }}</option>
-                    {% endfor %}
-                </select>                
-            </div>
-
-            <div class="mb-3">
-                <label for="price_min">Мін. ціна:</label>
-                <input type="number" name="price_min" id="price_min" class="form-control">
-            </div>
-
-            <div class="mb-3">
-                <label for="price_max">Макс. ціна:</label>
-                <input type="number" name="price_max" id="price_max" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-success">Застосувати</button>
-        </form>
     </div>
 
     <!-- Список Категорій -->
@@ -73,5 +44,6 @@ console.log("Скрипт підключився успішно");
 
 </script>
 {% endblock %}
+
 
 
