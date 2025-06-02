@@ -1,24 +1,46 @@
-<div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-    <a href="{% provider_login_url 'facebook' process='signup' %}" style="
-        background-color: #1877f2;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    ">
-        Facebook
-    </a>
+{% extends "main/base.html" %}
+{% load static %}
+{% load socialaccount %}
 
-    <a href="{% provider_login_url 'google' process='signup' %}" style="
-        background-color: #db4437;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    ">
-        Google
-    </a>
+{% block title %}Регістрація{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'main/css/registration.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumbs">
+    <a href="{% url 'home' %}" class="current1" data-i18n="breadcrumbs_login">Головна</a>
+    <span class="separator">/</span>
+    <a href="{% url 'register' %}" class="current2" data-i18n="breadcrumbs_register">Реєстрація</a>
+</nav>
+<div class="head">
+    <h1 class="reg" data-i18n="registration_heading">Реєстрація</h1>
+    <form id="" class="centr" onsubmit="return validateForm()" class="register">
+     
+        <label class="tin1" for="phone" data-i18n="phone_label">Номер телефону</label>
+        <div class="line"><input id="phone" class="inputLine" type="tel" data-i18n="phone_placeholder" placeholder="Номер телефону" pattern="\+380\d{9}" required></div>
+
+        <label class="tin1" for="fullName" data-i18n="name_label">ПІБ</label>
+        <div class="line"><input  id="fullName" class="inputLine" type="text" data-i18n="name_placeholder" placeholder="ПІБ" required></div>
+
+        <label class="tin1" for="password" data-i18n="password_label">Пароль</label>
+        <div class="line"><input  id="password" class="inputLine" type="password" data-i18n="password_placeholder" placeholder="Пароль" required></div>
+
+        <label class="tin1" for="password" data-i18n="password_placeholder">Підтвердіть пароль</label>
+        <div class="line"><input id="confirmPassword" class="inputLine" type="password" data-i18n="confirm_password_placeholder" placeholder="Підтвердіть пароль" required></div>
+
+        <div class="contButt">
+            <button type="submit" class="submit-btn" data-i18n="submit_button">Створити аккаунт</button>
+        </div>
+   </form>
 </div>
 
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'main/js/registration.js' %}"></script>
+{% endblock %}

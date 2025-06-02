@@ -1,49 +1,68 @@
-{% extends "base.html" %}
+{% extends "main/base.html" %}
 {% load static %}
 {% load socialaccount %}
 
 {% block title %}Вхід{% endblock %}
 
-{% block content %}
-<div style="max-width: 400px; margin: 50px auto;">
-    <h2>Вхід</h2>
-
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Увійти</button>
-    </form>
-
-    <p style="margin-top: 10px;">
-        Ще не маєте акаунта? <a href="{% url 'register' %}">Реєстрація</a>
-    </p>
-
-    <hr style="margin: 30px 0;">
-
-    <p style="text-align: center; font-weight: bold;">Або увійдіть через:</p>
-
-    <div style="display: flex; justify-content: center; gap: 10px;">
-        <a href="{% provider_login_url 'facebook' process='login' %}" style="
-            background-color: #1877f2;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        ">
-            Увійти через Facebook
-        </a>
-        <a href="{% provider_login_url 'google' process='login' %}" style="
-            background-color: #db4437;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        ">
-        Увійти через Google
-        </a>
-    </div>
-</div>
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
 {% endblock %}
 
+{% block content %}
+
+<nav class="breadcrumbs">
+    <a href="{% url 'home' %}" class="current1" data-i18n="breadcrumbs_register">Головна</a>
+    <span class="separator">/</span>
+    <a href="{% url 'user' %}" class="current2" data-i18n="breadcrumbs_login">Вхід</a>
+</nav>
+
+    <section class="login-container">
+      <h2 class="gr">Вхід</h2>
+      <div class="social-buttons">
+        <div class="border1" >
+            <img class="photoGoogle" src="{% static 'main/rt/1r.png' %}" alt="google">
+        <div class= "buttonG">
+            <a class="google" href="{% provider_login_url 'google' process='login' %}" >Google</a>
+         </div>
+            
+        </div>
+    
+            <div class="border1 ret" >
+                <img class="photoFacebook" src="{% static 'main/rt/2r.png' %}" alt="facebook">
+                <div class= "buttonF">
+                <a class="facebook" href="{% provider_login_url 'facebook' process='login' %}">FaceBook</a>
+             </div>  
+            </div>
+        
+                
+      </div>
+
+      <div class="or-text">Або</div>
+      
+
+      
+       
+
+        
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input class="up" type="text" name="username" placeholder="Електронна пошта" required />
+        <input class="up" type="password" name="password" placeholder="Пароль" required />
+        <button class="rtw" type="submit">Увійти</button>
+    </form>
+     
+
+
+      <div class="links">
+        <a class= "forgot-password"href="#">Забули пароль?</a>
+        <a class="reg" href="{% url 'register' %}">Реєстрація</a>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'main/js/login.js' %}"></script>
+{% endblock %}

@@ -1,11 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'main/base.html' %}
 {% load static %}
 
 {% block title %}Моє обране{% endblock %}
 
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'main/css/forat.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-    <h1 class="mb-4">Обране ❤️</h1>
+
+    <button id="favorites-button" type="button"><img class="photo12" src="{% static 'main/rt/hearty1.png' %}" alt="heart"></button>
+    <div class="container mt-5">
     <div id="favorites-list" class="row">
         <!-- Тут будуть підвантажуватись елементи -->
     </div>
@@ -44,7 +51,7 @@ function fetchFavorites() {
         favoritesList.innerHTML = '';
 
         if (data.length === 0) {
-            favoritesList.innerHTML = '<p>У вас поки що немає обраних елементів.</p>';
+            favoritesList.innerHTML = '<p style="text-align: center; margin-left: 60px; width: 400px;">Список обраних товарів порожній.<br>Додайте до нього товари, які вам подобаються</p>';
         } else {
             data.forEach(item => {
                 const div = document.createElement('div');
@@ -98,4 +105,13 @@ function showAlert(message, type) {
     }, 3000);
 }
 </script>
+
+<a class="wrt" href="{% url 'register' %}">Розпочати перегляд товарів</a>
+    
+{% endblock %}
+
+
+{% block scripts %}
+        <script src="{% static 'main/js/davc.js' %}"></script>
+
 {% endblock %}

@@ -1,16 +1,17 @@
-{% extends "base.html" %}
+{% extends "main/base.html" %}
 {% load static %}
 
-{% block title %}Головна — AtletiQ{% endblock %}
+{% block title %}AtletiQ{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    
-    <!-- Кнопки -->
-    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <button class="btn btn-secondary" onclick="toggleFilters()">Фільтри ⬇</button>
-        <button class="btn btn-primary mb-4" onclick="toggleCategories()">УСІ КАТЕГОРІЇ</button>
-    </div>
+
 
    
     <!-- Меню Фільтрів -->
@@ -52,11 +53,201 @@
     </div>
 
 </div>
+
+
+<main>
+   <div class="sideBar">
+    <section class="side1">
+        <div class="sideBar2">
+            <div class="barHeader">
+                    <button class="btn btn-secondary burger" onclick="toggleFilters()">
+                        <span></span>
+                    </button>
+                <div class="btn btn-primary mb-4">УСІ КАТЕГОРІЇ</div>
+            </div>
+
+            <div class="Categories">
+                <ul class="header__list">
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/1.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac1" >Амінокислоти</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/2.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac2">Протеїни</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/3.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac3">Вітаміни</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/4.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac4">Для схуднення</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/5.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac5">Для нарощування м'язів</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/6.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac6">Для тренування вдома</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/7.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac7">Для тренування в залі</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card1">
+                            <div class="cardFr">
+                                <a href="#"><img src="{% static 'main/photoList/8.png' %}" alt="/"></a>
+                            </div>
+                            <a href="#" class="header__link fac8">Інше</a>
+                        </div>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+</section>
+<div class="photo">
+        <div class="text-over">
+            <div class="textUnder1">Тренуйся.</div>
+            <div class="textUnder2">Перемагай.</div>
+            <div class="textUnder3">Repeat.</div>
+        </div>
+    </div>
+</div>
+
+<div class="hide">
+        <div class="hideText">Вибір категорій:</div>
+        <div class="hideCont">
+            <a href="#"><img class="cur1" src="{% static 'main/cursor/black2.png' %}" alt="вперед"></a>
+            <div class="cardHide">
+                <div class="imageHide"></div>
+                <div class="vH r1">Вуглеводи</div>
+            </div>
+            <div class="cardHide">
+                <div class="imageHide"></div>
+                <div class="vH r2">Жироспалювачі</div>
+            </div>
+            <div class="cardHide">
+                <div class="imageHide"></div>
+                <div class="vH r3">Комплекси вітамінів</div>
+            </div>
+            <a href="#"><img class="cur2" src="{% static 'main/cursor/black1.png' %}" alt="вперед"></a>
+        </div>
+</div>
+
+<div class="section-title1">Улюблені серед відвідувачів:</div>
+
+<div class="container3">
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+</div>
+
+<div class="container5">
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+</div>
+
+<!-- Блок "Останні переглянуті" -->
+<div class="section-title">Останні переглянуті:</div>
+
+<div class="container5">
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+<div class="card">
+    <div class="image-placeholder"></div>
+    <a href="#"><div class="v2">Товар</div></a>
+</div>
+</div>
+</main>
 {% endblock %}
 
-{% block scripts %}
-<script>
-    function toggleElementDisplay(id) {
+        
+        {% block scripts %}
+        <script src="{% static 'main/js/main.js' %}"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const favoritesButton = document.getElementById('favorites-button');
+
+    favoritesButton.addEventListener('click', function() {
+        if (isAuthenticated === "true") {
+            window.location.href = "{% url 'favorites_list' %}";
+        } else {
+            if (confirm("Щоб додати в обране, потрібно увійти або зареєструватися.\n\nНатисніть OK для переходу на сторінку входу.")) {
+                window.location.href = "{% url 'login' %}";
+            }
+        }
+    });
+});
+
+function toggleElementDisplay(id) {
         const el = document.getElementById(id);
         const isHidden = window.getComputedStyle(el).display === "none";
         el.style.display = isHidden ? "block" : "none";
@@ -70,8 +261,6 @@
         toggleElementDisplay("categoryList");
     }
 console.log("Скрипт підключився успішно");
-
 </script>
 {% endblock %}
-
 

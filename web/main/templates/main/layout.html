@@ -1,44 +1,226 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Мій сайт{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-</head>
-<body>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Liked</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="selected.css">
+        <link rel="stylesheet" href="reset.css">
+    </head>
+    <body>
+        <header>
+            <section class="header">
+                <div class="regulation">
+                    <div class="language">
+                        <div class="lineVert"><button onclick="changeLanguage('ua')">UA</button></div>
+                        <div><button onclick="changeLanguage('en')">EN</button></div>
+                    </div>
+                    <div class="toggle-container">
+                        <span class="toggle-label" id="themeLabel" data-i18n="theme_label" >Світла версія</span>
+                        <label class="switch">
+                          <input type="checkbox" id="themeToggle">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                </div>
+                <section class="SerchSection">
+                    <div class="lineSearch">
+                      <a href="../main/main.html"><div class="athletic">AthletiQ</div></a>
+                        <form class="searchForm">
+                            <input class="search" type="search" name="q" placeholder="Пошук товарів" data-i18n-placeholder="search_placeholder">
+                            <div class="search-icon">
+                                <div class="magnifer"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="side">
+                      <a href="../promotions/promotions.html"><div class="discount" data-i18n="discounts_title">Акції  %</div></a>
+                      <a href="../selected/selected.html"><img class="photo1" src="images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png" alt="heart"></a>
+                      <a href="../registration/registration.html"><img class="photo2" src="images1/867b6e5cbdbdb4833613b06168c86a6c-removebg-preview.png" alt="person"></a>
+                  </div>
+                    </div>
+                </section>
+            </section>
+        </header>
 
-<header class="p-3 mb-4 border-bottom bg-light">
-    <div class="container d-flex flex-wrap justify-content-center">
-        <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <span class="fs-4">Мій сайт</span>
-        </a>
+        <main>
 
-        <ul class="nav nav-pills">
-            {% if user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'favorites_list' %}" class="nav-link">Обране ❤️</a></li>
-                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Вийти</a></li>
-            {% else %}
-                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Увійти</a></li>
-                <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Реєстрація</a></li>
-            {% endif %}
-        </ul>
-    </div>
-</header>
+            <nav class="breadcrumbs">
+                <a href="../main/main.html" class="current1" data-i18n="breadcrumbs_login">Головна</a>
+                <span class="separator">/</span>
+                <a href="../selected/selected.html" class="current2" data-i18n="breadcrumbs_register">обране</a>
+            </nav>
 
-<main class="container">
-    {% block content %}
-    {% endblock %}
-</main>
+            <div class="tr">
+              <div class="trImg">
+                <img src="images1/okluk1.png">
+              </div>
+              <div class="txTr">Список обраних товарів запам'ятовується тільки для зареєстрованих клієнтів. Будь ласка, введіть свій логін та пароль, щоб 
+                <a class="er1" href="#">увійти в акаунт</a>, або <a class="er1" href="#">зареєструйтеся</a>.</div>
+            </div>
 
-<footer class="text-center p-3 mt-4 border-top">
-    &copy; 2024 Мій крутий сайт
-</footer>
+            <div class="ch">
+              <div class="ch1">Список обраного:</div>
+              <div class="ch2">Кількість товару: 3</div>
+            </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkdybP8O4PZrK+FfN6t3RQ9sxjLRxY2tw1F0Mi/5C54eWc0WGFM4" crossorigin="anonymous"></script>
+            <div class="var1">
+            <div class="product-list">
+            
+                <div class="product-card">
+                  <div class="product-image">
+                    <img src="./prot1/1r.png" alt="Фото товару" />
+                  </div>
+                  <div class="product-details">
+            
+                    <div class="product-title-row">
+                      <div class="product-title">
+                        100% Whey Gold Standard - Optimum Nutrition
+                      </div>
+                      <div class="product-meta-top">
+                        <b>Магазин:</b>
+                        <a class="utw" href="#">Gymbeam</a>
+                        <span class="pric">ціна: 3219</span>
+                      </div>
+                    </div>
+            
+                    <div class="product-info">
+                      <b>Вид:</b>Ізоляти, Сироваткові<br />
+                      <b>Смак:</b> Подвійний насичений шоколад<br />
+                      <b>Тип оброблення:</b> Комбінований<br />
+                      <b>Країна-виробник:</b> США
+                    </div>
+            
+                    <div class="gt">
+                        <img class="theme" src="./images1/black1.png">
+                        <div class="wishlist">Видалити з обраного</div>
+                    </div>
+                  </div>
+                </div>
+                
+                
 
-</body>
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="./prot1/2r.png" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                          Протеїн Про 70 450 г Полуниця  <br> ТМ Вансітон / Vansiton
+                        </div>
+                        <div class="product-meta-top">
+                          <b>Магазин:</b>
+                          <a class="utw" href="#">Allnutrition.ua</a>
+                          <span class="pric">ціна: 999</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Ізоляти, Сироваткові <br />
+                        <b>Смак:</b> Ваніль<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> США
+                      </div>
+              
+                      <div class="gt">
+                        <img class="theme" src="./images1/black1.png">
+                        <div class="wishlist">Видалити з обраного</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="./prot1/3r.png" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Протеїн БІО Vegan - VanaVita
+                        </div>
+                        <div class="product-meta-top">
+                          <b>Магазин:</b>
+                          <a class="utw" href="#">GymBeam</a>
+                          <span class="pric">ціна: 1189</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> банан, полуниця<br />
+                        <b>Вага:</b> 920 г<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> Німеччина
+                      </div>
+              
+                      <div class="gt">
+                        <img class="theme" src="./images1/black1.png">
+                        <div class="wishlist">Видалити з обраного</div>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+
+        </main>
+
+        <footer class="bottom">
+            <div class="description">
+                <img class="photo3" src="images1/68e4b7c58cd938121d4469e70c69ecf6-removebg-preview.png" alt="heart">
+                
+                <div class="banner">
+                        <div class="narrowing-text">
+                            <div class="text">
+                                <p class="text1" data-i18n="footer_text1"><span class="brand-name">AthletiQ</span> – це каталог спортивних товарів, створений для тих, хто прагне бути у формі та вести активний спосіб життя.</p>
+                                <p class="text2" data-i18n="footer_text2"> Ми допоможемо вам знайти все необхідне для тренувань, спортивного харчування та відновлення за найкращими </p> 
+                                 <p class="text3" data-i18n="footer_text3">цінами. У нашому каталозі ви зможете легко порівняти товари, вибрати оптимальну модель за характеристиками та</p>
+                                  <p class="text4" data-i18n="footer_text4">прочитати відгуки інших користувачів. Ми знаємо, як важливо купувати якісне спорядження без переплат, тому </p>
+                                    <p class="text5" data-i18n="footer_text5">пропонуємо тільки перевірені варіанти. Досягайте нових вершин разом із AthletiQ! Ваша ціль – наш пріоритет!</p>
+                            </div>
+                        </div>
+                </div>
+               
+            </div>
+            <div class="boxImages">
+                <div class="image-container1"><img class="boxPhoto1" src="photos/00a239f601b99486c8fa2dbda079860f.jfif" alt="boxer girl"></div>
+                <div class="image-container2"><img class="boxPhoto2" src="photos/ebd3470324e617369e6f0a461f163272.jfif" alt="boxer man"></div>
+            </div>
+            <div class="foot">
+                <div class="foot2">
+                    <section class="commun">
+                        <div class="infor1">
+                            <h3 class="inforOne" data-i18n="feedback_title">Зворотній зв'зок</h3>
+                            <div class="informat">
+                                <p class="stroc1" data-i18n="feedback_text1">Є ідеї або пропозиції щодо каталогу?</p>
+                                <p class="stroc2" data-i18n="feedback_text2"> Напиши нам! Ми постійно вдосконалюємо платформу, і твоя думка важлива.</p>
+                            </div>
+                        </div>
+                        <div class="infor2">
+                            <h3 class="inforTwo" data-i18n="disclaimer_title">Відмова від відповідальності </h3>
+                            <div class="informat2">
+                                <p class="stroc3" data-i18n="disclaimer_text1">AthleticQ- це лише каталог. Ми не продаємо товари, а лише допомагаємо знайти</p>
+                                <p class="stroc4" data-i18n="disclaimer_text2">найкращі пропозиції. Всі деталі щодо купівлі уточнюй у продавця.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="appImages">
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img class="app1" src="appImages/84319cc7f5efe7382038410c39141782-removebg-preview.png" alt="facebook" width="50">
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank">
+                            <img class="app2" src="appImages/6d6399c395bff71b4baa788e47058821-removebg-preview.png" alt="Instagram" width="50">
+                        </a>
+                        <a href="https://t.me" target="_blank">
+                            <img class="app3" src="appImages/f83236d73a6d72fbb51af666b31ba4c3-removebg-preview.png" alt="Telegram" width="50">
+                        </a>
+                    </section>
+                </div>
+                <div class="ending"> AthletiQ,  2025 </div>
+            </div>
+        </footer>
+        <script src="main.js"></script>
+    </body>
 </html>
-

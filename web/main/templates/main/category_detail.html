@@ -1,16 +1,572 @@
 {% extends "base.html" %}
 {% load static %}
+{% load socialaccount %}
 
-{% block title %}
-    {{ category.name }} | Категорія
+{% block title %}Товари{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/promotions.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
 {% endblock %}
 
+
 {% block content %}
-<div class="container mt-5">
-    <h1 class="mb-4">{{ category.name }}</h1>
-    <p class="mb-4">Тут буде контент для категорії: <strong>{{ category.name }}</strong>.</p>
-    <a href="{% url 'home' %}" class="btn btn-secondary">← Назад на головну</a>
-</div>
+        <main>
+
+            <nav class="breadcrumbs">
+                <a  href="{% url 'home' %}" class="current1" data-i18n="breadcrumbs_login">Головна</a>
+                <span class="separator">/</span>
+                <a href="#" class="current2" data-i18n="breadcrumbs_register">Спортивні добавки</a>
+                <span class="separator">/</span>
+                <a href="#" class="current3" data-i18n="breadcrumbs_register">Протеїни</a>
+            </nav>
+
+
+
+            <div class="var1">
+            <div class="product-list">
+
+                <div class="product-card">
+                  <div class="product-image">
+                    <img src="{% static 'main/prot/1r.png' %}" alt="Фото товару" />
+                  </div>
+                  <div class="product-details">
+            
+                    <div class="product-title-row">
+                      <div class="product-title">
+                        Протеїн Willmax Whey Protein 80 %<br />
+                        920 г Полуниця (3567378)
+                      </div>
+                      <div class="product-meta-top">
+                        <b class="t4">Магазин:</b>
+                        <a class="ut4" href="#">Rozetka.ua</a>
+                        <span class="pric">ціна: 1076</span>
+                      </div>
+                    </div>
+            
+                    <div class="product-info">
+                      <b>Вид:</b> Молочні, Сироваткові<br />
+                      <b>Вага:</b> 920 г<br />
+                      <b>Вікова група:</b> від 18 до 20 років<br />
+                      <b>Смак:</b> Полуниця<br />
+                      <b>Тип оброблення:</b> Концентрат<br />
+                      <b>Країна-виробник:</b> Україна
+                    </div>
+                    
+                    <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    
+                  </div>
+                </div>
+            
+                <div class="product-card">
+                  <div class="product-image">
+                    <img src="{% static 'main/prot/2r.png' %}" alt="Фото товару" />
+                  </div>
+                  <div class="product-details">
+            
+                    <div class="product-title-row">
+                      <div class="product-title">
+                        100% Whey Gold Standard - Optimum Nutrition
+                      </div>
+                      <div class="product-meta-top">
+                        <b class="t4">Магазин:</b>
+                        <a class="ut4" href="#">Gymbeam</a>
+                        <span class="pric">ціна: 3219</span>
+                      </div>
+                    </div>
+            
+                    <div class="product-info">
+                      <b>Вид:</b>Ізоляти, Сироваткові<br />
+                      <b>Смак:</b> Подвійний насичений шоколад<br />
+                      <b>Тип оброблення:</b> Комбінований<br />
+                      <b>Країна-виробник:</b> США
+                    </div>
+            
+                    <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/3r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Whey Protein 90 2500 g. Activevites
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">SportMenu</a>
+                          <span class="pric">ціна: 3219</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Сироваткові<br />
+                        <b>Смак:</b> Манго<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> Німеччина
+                      </div>
+              
+                      <div class="gt">
+                        <img  class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/4r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                          Протеїн Про 70 450 г Полуниця ТМ Вансітон
+                          / Vansiton
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">Allnutrition.ua</a>
+                          <span class="pric">ціна: 999</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Ізоляти, Сироваткові <br />
+                        <b>Смак:</b> Ваніль<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> США
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/5r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Biotech Iso Whey Zero 25g шоколад
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">Allnutrition.ua</a>
+                          <span class="pric">ціна: 72</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Ізоляти, Сироваткові<br />
+                        <b>Смак:</b> шоколад<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> Угорщина
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/6r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Протеїн Про 70 450 г Полуниця ТМ Вансітон
+                            / Vansiton
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">GoldenFarm</a>
+                          <span class="pric">ціна: 441</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Комплексні <br />
+                        <b>Смак:</b> шоколад<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> Угорщина
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/7r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Протеїн Твікс Twix Hi Protein Powder, 875 грам
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">bcaa.pro</a>
+                          <span class="pric">ціна: 1299</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Комплексні<br />
+                        <b>Смак:</b> шоколад, карамель<br />
+                        <b>Тип оброблення:</b> сироватковий концентрат, протеїн<br />
+                        <b>Країна-виробник:</b> Ірландія
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/8r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Протеїн ізолят MST Nutrition Protein Whey Isolate, 
+                            500 грам
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">bcaa.pro</a>
+                          <span class="pric">ціна: 1299</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Молочні, Сироваткові<br />
+                        <b>Смак:</b> шоколад<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> США
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/9r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+                      <div class="product-title-row">
+                        <div class="product-title">
+                          Optimum Nutrition 100% Whey Gold Standard
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">belok.ua</a>
+                          <span class="pric">ціна: 1799</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> Ізоляти<br />
+                        <b>Смак:</b> шоколад<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> США
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="product-card">
+                    <div class="product-image">
+                        <img src="{% static 'main/prot/10r.png' %}" alt="Фото товару" />
+                    </div>
+                    <div class="product-details">
+              
+                      <div class="product-title-row">
+                        <div class="product-title">
+                            Протеїн БІО Vegan - VanaVita
+                        </div>
+                        <div class="product-meta-top">
+                          <b class="t4">Магазин:</b>
+                          <a class="ut4" href="#">GymBeam</a>
+                          <span class="pric">ціна: 1189</span>
+                        </div>
+                      </div>
+              
+                      <div class="product-info">
+                        <b>Вид:</b> банан, полуниця<br />
+                        <b>Вага:</b> 920 г<br />
+                        <b>Тип оброблення:</b> Комбінований<br />
+                        <b>Країна-виробник:</b> Німеччина
+                      </div>
+              
+                      <div class="gt">
+                        <img class="toggle-image" data-alt="./images1/black1.png" style="cursor: pointer;" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}">
+                        <div class="wishlist"> Додати в обране</div>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+
+            
+
+
+
+            <div class="sidebar-filter">
+                <h2 >Параметри</h2>
+                
+                <div class="filter-section">
+                    <div class="range-slider">
+                      <input type="range" min="0" max="1000" value="0" id="min-range">
+                      <input type="range" min="0" max="1000" value="1000" id="max-range">
+                      <div class="slider-track"></div>
+                    </div>                   
+                  <div class="price-inputs">
+                    <span class="rt1">Ціна:</span>
+                    <span class="rt2">від</span>
+                    <input type="text" />
+                    <span class="rt2">до</span>
+                    <input type="text" />
+                    <button class="search-button">
+                      
+                      <svg class="wr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="24" y1="24" x2="16.65" y2="16.65" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="filter-section">
+                  <h3>Країна виробник</h3>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input type="radio" id="country-usa" name="country" />
+                      <label for="country-usa" class="rt3">США</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="country-ukraine" name="country" />
+                      <label for="country-ukraine " class="rt3">Україна</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="country-germany" name="country" />
+                      <label for="country-germany" class="rt3">Німеччина</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="country-hungary" name="country" />
+                      <label for="country-hungary" class="rt3">Угорщина</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="country-ireland" name="country" />
+                      <label for="country-ireland" class="rt3">Ірландія</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-section">
+                  <h3>Виробник</h3>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input type="radio" id="brand-willmax" name="brand" />
+                      <label for="brand-willmax" class="rt3"> Willmax</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-optimum" name="brand" />
+                      <label for="brand-optimum" class="rt3">Optimum Nutrition</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-activevites" name="brand" />
+                      <label for="brand-activevites" class="rt3"> ActiveVites</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-biotech" name="brand" />
+                      <label for="brand-biotech" class="rt3">Biotech</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-vansiton" name="brand" />
+                      <label for="brand-vansiton" class="rt3">Vansiton</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-mst" name="brand" />
+                      <label for="brand-mst" class="rt3">MST</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-biovegan" name="brand" />
+                      <label for="brand-biovegan" class="rt3">BIO Vegan</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="brand-hiprotein" name="brand" />
+                      <label for="brand-hiprotein" class="rt3">Hi Protein</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-section">
+                  <h3>Вага</h3>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input type="radio" id="weight-1kg" name="weight" />
+                      <label for="weight-1kg" class="rt3">1 кг</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="weight-2-3kg" name="weight" />
+                      <label for="weight-2-3kg" class="rt3">2-3 кг</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="weight-1-2kg" name="weight" />
+                      <label for="weight-1-2kg" class="rt3">1-2 кг</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="weight-more-3kg" name="weight" />
+                      <label for="weight-more-3kg" class="rt3">›3 кг</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-section">
+                  <h3>Смак</h3>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input type="radio" id="taste-pineapple" name="taste" />
+                      <label for="taste-pineapple" class="rt3">Ананас-кокс</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-orange" name="taste" />
+                      <label for="taste-orange" class="rt3">Апельсин</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-vanilla-strawberry" name="taste" />
+                      <label for="taste-vanilla-strawberry" class="rt3">Ваніл-полуниця</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-raspberry" name="taste" />
+                      <label for="taste-raspberry" class="rt3">Полуниця</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-no-taste" name="taste" />
+                      <label for="taste-no-taste" class="rt3">Без смаку</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-banana" name="taste" />
+                      <label for="taste-banana" class="rt3">Банан</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-vanilla" name="taste" />
+                      <label for="taste-vanilla" class="rt3"> Ваніль</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-chocolate" name="taste" />
+                      <label for="taste-chocolate" class="rt3">Шоколад</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-coconut" name="taste" />
+                      <label for="taste-coconut" class="rt3">Кокос</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-cookie" name="taste" />
+                      <label for="taste-cookie" class="rt3">Орік</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-caramel" name="taste" />
+                      <label for="taste-caramel" class="rt3">Солона карамель</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="taste-cake" name="taste" />
+                      <label for="taste-cake" class="rt3">Торт</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="filter-section">
+                  <h3>Форма випуску</h3>
+                  <div class="radio-group">
+                    <div class="radio-option">
+                      <input type="radio" id="form-powder" name="form" />
+                      <label for="form-powder" class="rt3">Порошок</label>
+                    </div>
+                    <div class="radio-option">
+                      <input type="radio" id="form-bar" name="form" />
+                      <label for="form-bar" class="rt3">Батончик</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="contButt">
+                    <button type="submit" class="submit-btn" data-i18n="submit_button">Застосувати</button>
+                </div>
+              </div>
+              
+         </div>
+
+
+
+
+
+
+
+
+         
+             <!-- Блок "Останні переглянуті" -->
+    <div class="section-title">Останні переглянуті:</div>
+    
+    <div class="container5">
+        <div class="card">
+            <div class="image-placeholder"></div>
+            <div class="v2">Товар</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder"></div>
+            <div class="v2">Товар</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder"></div>
+            <div class="v2">Товар</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder"></div>
+            <div class="v2">Товар</div>
+        </div>
+    </div>
+            
+        </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'main/js/promotions.js' %}"></script>
 {% endblock %}
 
 

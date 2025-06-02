@@ -1,55 +1,126 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}AtletiQ{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-</head>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}AtletiQ{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+        {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'main/css/head.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/reset.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <section class="header">
+                <div class="regulation">
+                    <div class="language">
+                        <div class="lineVert"><button onclick="changeLanguage('ua')">UA</button></div>
+                        <div><button onclick="changeLanguage('en')">EN</button></div>
+                    </div>
+                    <div class="toggle-container">
+                        <span class="toggle-label" id="themeLabel" data-i18n="theme_label" >Світла версія</span>
+                        <label class="switch">
+                          <input type="checkbox" id="themeToggle">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                </div>
+                <section class="SerchSection">
+                    <div class="lineSearch">
+                        <a href="{% url 'home' %}"><div class="athletic">AthletiQ</div></a>
+                        <form class="searchForm">
+                            <input class="search" type="search" name="q" placeholder="Пошук товарів" data-i18n-placeholder="search_placeholder">
+                            <div class="search-icon">
+                                <div class="magnifer"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="side">
 
-<body style="background-color: #ffffff;">
-
-    <header style="position: relative; height: 60px; border-bottom: 1px solid #ccc;">
-        <!-- Назва сайту ліворуч -->
-        <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%);">
-            <a href="{% url 'home' %}" style="text-decoration: none; font-weight: bold; font-size: 24px; color: black;">
-                AtletiQ
-            </a>
-        </div>
-    
-        <!-- Кнопки справа -->
-        <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); display: flex; gap: 10px;">
-            
-            <button id="favorites-button" type="button">❤️</button>
-    
-            {% if user.is_authenticated %}
-                 {% if request.path != '/user/' %}
-                     <a href="{% url 'user' %}">👤</a>
-                 {% else %}
-                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                         {% csrf_token %}
-                         <button type="submit">Вийти</button>
-                     </form>
-                 {% endif %}
-             {% else %}
-                 <a href="{% url 'login' %}">👤</a>
-             {% endif %}
-        </div>
-    </header>
+                        <a href="{% url 'register' %}"><div class="discount" data-i18n="discounts_title">Акції  %</div></a>
+                        <button id="favorites-button" type="button"><img class="photo1" src="{% static 'main/images1/0484bc0ef12a2df6ed44af00caebfb32-removebg-preview.png' %}" alt="heart"></button>
+                        {% if user.is_authenticated %}
+                        {% if request.path != '/user/' %}
+                            <a href="{% url 'user' %}"><img class="photo2" src="{% static 'main/images1/867b6e5cbdbdb4833613b06168c86a6c-removebg-preview.png' %}" alt="person"></a>
+                        {% else %}
+                            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit">Вийти</button>
+                            </form>
+                        {% endif %}
+                    {% else %}
+                        <a href="{% url 'login' %}"><img class="photo2" src="{% static 'main/images1/867b6e5cbdbdb4833613b06168c86a6c-removebg-preview.png' %}" alt="person"></a>
+                    {% endif %}
+                        
+                    </div>
+                </section>
+            </section>
+        </header>
     
 
-<main style="padding: 20px;">
+
     {% block content %}
-    {% endblock %}
-</main>
 
-<footer style="text-align: center; padding: 20px; border-top: 1px solid #ccc;">
-    &copy; 2025 AtletiQ
+    {% endblock %}
+
+
+<footer class="bottom">
+    <div class="description">
+        <img class="photo3" src="{% static 'main/images1/68e4b7c58cd938121d4469e70c69ecf6-removebg-preview.png' %}" alt="heart">
+        
+        <div class="banner">
+                <div class="narrowing-text">
+                    <div class="text">
+                        <p class="text1" data-i18n="footer_text1"><span class="brand-name">AthletiQ</span> – це каталог спортивних товарів, створений для тих, хто прагне бути у формі та вести активний спосіб життя.</p>
+                        <p class="text2" data-i18n="footer_text2"> Ми допоможемо вам знайти все необхідне для тренувань, спортивного харчування та відновлення за найкращими </p> 
+                         <p class="text3" data-i18n="footer_text3">цінами. У нашому каталозі ви зможете легко порівняти товари, вибрати оптимальну модель за характеристиками та</p>
+                          <p class="text4" data-i18n="footer_text4">прочитати відгуки інших користувачів. Ми знаємо, як важливо купувати якісне спорядження без переплат, тому </p>
+                            <p class="text5" data-i18n="footer_text5">пропонуємо тільки перевірені варіанти. Досягайте нових вершин разом із AthletiQ! Ваша ціль – наш пріоритет!</p>
+                    </div>
+                </div>
+        </div>
+       
+    </div>
+    <div class="boxImages">
+        <div class="image-container1"><img class="boxPhoto1" src="{% static 'main/photos/00a239f601b99486c8fa2dbda079860f.jfif' %}" alt="boxer girl"></div>
+        <div class="image-container2"><img class="boxPhoto2" src="{% static 'main/photos/ebd3470324e617369e6f0a461f163272.jfif' %}" alt="boxer man"></div>
+    </div>
+    <div class="foot">
+        <div class="foot2">
+            <section class="commun">
+                <div class="infor1">
+                    <h3 class="inforOne" data-i18n="feedback_title">Зворотній зв'зок</h3>
+                    <div class="informat">
+                        <p class="stroc1" data-i18n="feedback_text1">Є ідеї або пропозиції щодо каталогу?</p>
+                        <p class="stroc2" data-i18n="feedback_text2"> Напиши нам! Ми постійно вдосконалюємо платформу, і твоя думка важлива.</p>
+                    </div>
+                </div>
+                <div class="infor2">
+                    <h3 class="inforTwo" data-i18n="disclaimer_title">Відмова від відповідальності </h3>
+                    <div class="informat2">
+                        <p class="stroc3" data-i18n="disclaimer_text1">AthleticQ- це лише каталог. Ми не продаємо товари, а лише допомагаємо знайти</p>
+                        <p class="stroc4" data-i18n="disclaimer_text2">найкращі пропозиції. Всі деталі щодо купівлі уточнюй у продавця.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="appImages">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img class="app1" src="{% static 'main/appImages/84319cc7f5efe7382038410c39141782-removebg-preview.png' %}" alt="facebook" width="50">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img class="app2" src="{% static 'main/appImages/6d6399c395bff71b4baa788e47058821-removebg-preview.png' %}" alt="Instagram" width="50">
+                </a>
+                <a href="https://t.me" target="_blank">
+                    <img class="app3" src="{% static 'main/appImages/f83236d73a6d72fbb51af666b31ba4c3-removebg-preview.png' %}" alt="Telegram" width="50">
+                </a>
+            </section>
+        </div>
+        <div class="ending"> AthletiQ,  2025 </div>
+    </div>
 </footer>
 
-<!-- Спочатку передаємо статус авторизації -->
 <script>
     const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 </script>

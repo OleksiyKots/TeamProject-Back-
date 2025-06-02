@@ -1,0 +1,1187 @@
+@font-face {
+  font-family: "Nico Moji";
+  src: url('fontsM/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+}
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600,500,400,700,italic|Inter:400");
+
+
+/* самий верх */
+/* самий верх */
+/* самий верх */
+.topheart1{
+  cursor: pointer;
+}
+.submit{
+  background-color: lightgray;
+}
+.header {
+    background: linear-gradient(to right, #DADFE2, #787A7C); 
+    padding-top: 5px;
+    height: 120px;
+    
+}
+
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  margin-left: 40px;
+}
+
+
+
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs .separator {
+  margin-left: 9px;
+  margin-right: 9px;
+  padding-bottom: 4px;
+  color: #777;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+.regulation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* перемикання мови */
+
+.language {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-top: 2px;
+    margin-right: 15px;
+}
+.language button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+.lineVert {
+    position: relative;
+}
+
+.lineVert button {
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.lineVert::after {
+    content: " "; 
+    display: inline-block; 
+    width: 1.8px; 
+    height: 19px; 
+    background-color: #B0ACAC;
+    position: absolute; 
+    top: -1px; 
+    left: 100%;  
+    margin-left: -4px; 
+}
+
+
+
+/* перемикач темна/світла тема */
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .toggle-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; width: 16px;
+    left: 2px; bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+  /* перемикач темна/світла тема */
+
+
+/* самий верх */
+/* самий верх */
+/* самий верх */
+
+    /* Рядок пошуку */
+
+
+.SerchSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lineSearch {
+    display: flex; 
+}
+
+.athletic {
+    font-size: 48px;
+    margin-right: 60px;
+    margin-left: 8px;
+    margin-top: 5px;
+    font-family: "Nico Moji", sans-serif;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: #000;
+}
+
+.search {
+    margin-top: 8px;
+    height: 44px;
+    width: 400px;
+    border: 1.5px solid black !important;
+    border-radius: 4px 0 0 4px;
+    background-color: transparent;
+}
+
+.search::placeholder {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.search-icon {
+    width: 66px;
+    height: 44px;
+    border: 1.5px solid black;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 399px;
+    margin-top: -44px;
+}
+
+.magnifer {
+    width: 18px;
+    height: 18px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.magnifer::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+    bottom: -8px;
+    right: -2px;
+    transform: rotate(-45deg);
+}
+
+/* акції */
+
+.side {
+    display: flex;
+}
+
+.discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    margin-top: 9px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: 1.5px solid black;
+    border-radius: 3px;
+    height: 40px;
+    width: 75px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+
+.photo1 {
+    margin-right: 10px;
+    margin-top: 7px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.photo2 {
+    margin-right: 50px;
+    margin-top: 7px;
+    height: 50px;
+    cursor: pointer;
+
+}
+
+.photoMain{
+    height: 25px;
+    margin-left: -45px;
+}
+.photoGoogle{
+  height: 25px;
+  margin-left: -30px;
+}
+.photoFacebook{
+  height: 25px;
+  margin-left: -35px;
+}
+.photoApple{
+  height: 25px;
+  margin-left: -60px;
+}
+/* зміна сторінки */
+
+.current1 {
+  color: #000;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 550; 
+  margin-left: 3px; 
+}
+
+.current2 {
+  color: #959090;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600; 
+}
+
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs .separator {
+  padding-bottom: 2px;
+  margin-right: 4px;
+  margin-left: 1px;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- ТЕМИ --- */
+
+  
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .search {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+  }
+
+  
+  .lang-and-switch {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  
+  .login-container {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin-left: 415px;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 40px;
+    margin-top: 30px;;
+    font-size: 30px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+
+  }
+  .loginbutton{
+    background-color: lightgray;
+  }
+  .social-buttons{
+    width: 800px;
+    display: flex;
+  }
+  .border1 {
+   width:175px;
+   height:40px;
+    margin: 10px 80px 20px -10px; 
+    
+    border: 1.5px solid black;
+    border-radius: 20px;
+    background-color: hsl(0, 0%, 100%);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Montserrat';
+    align-items: center;
+   
+    display: flex;
+    justify-content: center;
+  }
+  
+  .border1 button{
+    background-color: hsl(0, 0%, 100%);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+  }
+
+  .border1 a {
+    text-decoration: none;
+    color: #000;
+    margin: 0;
+  }
+  .apple{
+    align-items: center;
+   
+    display: flex;
+    justify-content: center;
+  }
+  .facebook{
+    align-items: center;
+
+    display: static;
+    justify-content: center;
+  }
+  .google{
+    align-items: center;
+   margin-left: 45px;
+    display: flex;
+    justify-content: center;
+  }
+  .buttonG{
+    margin-left: 25px;
+  }
+  .buttonF{
+    margin-left: 20px;
+  }
+  .buttonA{
+    margin-left: 30px;
+  }
+  .social-buttons button:hover {
+    background-color: #ccc;
+  }
+  .socials{
+    margin-bottom: 15px;
+    align-items: center;
+   
+   display: flex;
+   justify-content: center;
+  }
+ .text-wrapper-21 {
+  margin-left: 320px;
+  margin-bottom: -22px;
+  height: 15px;
+  width: 63px;
+  cursor: pointer;
+}
+.element-4{
+  margin-left: 215px;
+    height: 13px;
+    width: 23px;
+    margin-bottom: -10px;
+    cursor: pointer;
+}
+  
+  .or-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 15px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+  }
+  .or-text::before{
+    content: '';
+    display: block;
+    flex: 1;
+    position: relative;
+    height: 0.5px;
+    background-color: gray;
+    margin-right: 12px;
+  }
+  .or-text::after{
+    content: '';
+    display: block;
+    flex: 1;
+    position: relative;
+    height: 0.5px;
+    background-color: gray;
+    margin-left: 12px;
+  }
+
+  form input[type="text"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  
+  
+  form button {
+    width: 281px;
+    height: 50px;
+    padding: 10px;
+    background-color:lightgray;
+    color: #020202;
+    border: 1.5px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 30px
+
+  }
+  form button:hover {
+    background-color: #555;
+  }
+  
+  .links {
+    margin-top: 20px;
+  }
+  .links a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+  }
+  
+  .reg{
+    font-size: 18px;
+    padding-top: 15px;
+  }
+  .forgot-password{
+    font-weight:bolder;
+    font-style: italic;
+    font-size: 12px;
+  }
+  
+  footer {
+    background-color: var(--header-bg);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 40px;
+  }
+  
+  /* --- Перемикач --- */
+ 
+  .description {
+    display: flex;
+    margin-top: 80px;
+    background-color: lightgray;
+    height: 120px;
+  }
+  
+  .photo3 {
+    height: 80px;
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-right: 125px;
+  }
+  
+  .text {
+    margin-top: 20px;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+  
+  .brand-name {
+    font-family: "Nico Moji", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .text1 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text2 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text3 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text4 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text5 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  
+  
+  .boxImages {
+    display: flex;
+  }
+  
+  .image-container1 {
+    width: 50%;
+    height: 350px;
+    overflow: hidden; 
+  }
+  
+  .boxPhoto1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-container2 {
+    width: 50%;
+    height: 350px;
+    overflow: hidden; 
+  }
+  
+  .boxPhoto2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .foot {
+    background: linear-gradient(to right, #DADFE2, #787A7C); 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+  
+  .foot2 {
+    display: flex;
+  }
+  
+  .commun {
+    margin-left: 30px;
+  }
+  
+  .inforOne {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .stroc1 {
+    margin: 2px 0 2px 0;
+  }
+  
+  .inforTwo {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .stroc3 {
+    margin: 2px 0 2px 0;
+  }
+  
+  .ending {
+    margin-left: 30px;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    font-family: "Nico Moji", sans-serif;
+    font-size: 25px;
+  }
+  
+  .appImages {
+    margin-top: 30px;
+    margin-left: 180px;
+  }
+  
+  .app2 {
+    height: 45px;
+    width: 65px;
+  }
+  
+  .appImages a {
+    text-decoration: none;
+  }
+  /* Мобільні телефони */
+  
+  
+  @font-face {
+      font-family: "Nico Moji";
+      src: url('fonts/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+  }
+  
+  .description {
+    display: flex;
+    margin-top: 80px;
+    background-color: lightgray;
+    height: 120px;
+  }
+  
+  .photo3 {
+    height: 80px;
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-right: 125px;
+  }
+  
+  .text {
+    margin-top: 20px;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+  
+  .brand-name {
+    font-family: "Nico Moji", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .text1 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text2 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text3 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text4 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text5 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* фото боксерів */
+  
+  .boxImages {
+    display: flex;
+  }
+  
+  .image-container1 {
+    width: 50%;
+    height: 350px;
+    overflow: hidden; 
+  }
+  
+  .boxPhoto1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-container2 {
+    width: 50%;
+    height: 350px;
+    overflow: hidden; 
+  }
+  
+  .boxPhoto2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  
+  .foot {
+    background: linear-gradient(to right, #DADFE2, #787A7C); 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+  
+  .foot2 {
+    display: flex;
+  }
+  
+  .commun {
+    margin-left: 30px;
+  }
+  
+  .inforOne {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .stroc1 {
+    margin: 2px 0 2px 0;
+  }
+  
+  .inforTwo {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .stroc3 {
+    margin: 2px 0 2px 0;
+  }
+  
+  .ending {
+    margin-left: 30px;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    font-family: "Nico Moji", sans-serif;
+    font-size: 25px;
+  }
+  
+  
+  .appImages {
+    margin-top: 30px;
+    margin-left: 180px;
+  }
+  
+  .app2 {
+    height: 45px;
+    width: 65px;
+  }
+  
+  .appImages a {
+    text-decoration: none;
+  }
+ 
+  html {
+    background-color: white !important;
+  }
+  
+  
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .athletic {
+      font-size: 36px;
+      margin-right: 30px;
+      margin-left: 0;
+    }
+  
+    .search {
+      width: 300px;
+    }
+  
+    .search-icon {
+      margin-left: 299px;
+    }
+  
+    .discount {
+      margin-right: 20px;
+      margin-left: 15px;
+    }
+  
+    .photo2 {
+      margin-right: 25px;
+    }
+  
+    .centr {
+      width: 80%;
+    }
+  
+    .image-container1,
+    .image-container2 {
+      height: 250px;
+    }
+  
+    .description {
+      height: 190px;
+    }
+  
+    .photo3 {
+      margin-left: 45px;
+      margin-top: 50px;
+    }
+    .appImages {
+      margin-left: 100px;
+      margin-right: 100px;
+      display: flex;
+    }
+  }
+  
+  /* --- Мобільні пристрої --- */
+  @media (max-width: 768px) {
+    .header {
+      height: auto;
+      padding-bottom: 10px;
+    }
+  
+    .slider {
+      height: 10px;
+      width: 15px;
+    }
+  
+    .slider::before {
+      height: 8px;
+      width: 8px;
+      left: 2px;
+      top: 1px;
+    }
+  
+    input:checked + .slider:before {
+      transform: translateX(3px);
+    }
+  
+    .switch {
+      margin: 5px 0 0 0;
+      width: 20px;
+    }
+  
+    .regulation {
+      justify-content: end;
+    }
+  
+    .toggle-label {
+      font-size: 8px;
+      margin-left: 5px;
+      margin-top: -6px;
+    }
+  
+    .magnifer {
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+    }
+  
+    .magnifer::after {
+      height: 7px;
+      right: -2px;
+      bottom: -5px;
+      width: 1px;
+    }
+  
+    .language {
+      margin-right: 0;
+      justify-content: center;
+      margin-top: 1px;
+    }
+  
+    .lineVert button {
+      font-size: 9px;
+    }
+  
+    .language button {
+      font-size: 9px;
+    }
+  
+    .lineVert::after {
+      height: 15px;
+      margin-top: 3px;
+      width: 1px;
+    }
+  
+    .SerchSection {
+      align-items: center;
+      margin-top: -25px;
+    }
+    
+    .search {
+      width: 125px;
+      height: 24px;
+      padding: 0;
+      margin: 17px 0 0 0;
+      border-radius: 3px 0 0 3px;
+    }
+  
+    .search::placeholder {
+      font-size: 10px;
+    }
+  
+    .athletic {
+      font-size: 13px;
+      margin: 0;
+      margin-top: 24px;
+      margin-right: 19px;
+      padding: 0;
+      width: 100%;
+    }
+  
+    .search-icon {
+      margin-left: 0;
+      width: 25px;
+      height: 24px;
+      margin-left: 124px;
+      margin-top: -24px;
+      border-radius: 0 3px 3px 0;
+    }
+  
+    .searchForm {
+      height: 24px;
+    }
+  
+    .side {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+  
+    .discount {
+      width: 41px;
+      height: 24px;
+      font-size: 10px;
+      margin-top: 7px;
+      margin-right: 8px;
+    }
+  
+    .photo2 {
+      height: 25px;
+      width: 26px;
+      margin-right: 5px;
+    }
+  
+    .photo1 {
+      height: 25px;
+      width: 26px;
+      margin-right: 5px;
+    }
+  
+    .centr {
+      width: 90%;
+    }
+  
+    .submit-btn {
+      width: 50%;
+    }
+  
+    .description {
+      height: auto;
+      padding-bottom: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    .photo3 {
+      margin: 20px auto 0;
+      height: 38px;
+      width: 41px;
+    }
+    .text1 {
+      font-size: 5.5px;
+      font-weight: 500;
+    }
+    .text2 {
+      font-size: 5.5px;
+      font-weight: 500;
+    }
+    .text3 {
+      font-size: 5.5px;
+      font-weight: 500;
+    }
+    .text4 {
+      font-size: 5.5px;
+      font-weight: 500;
+    }
+    .text5 {
+      font-size: 5.5px;
+      font-weight: 500;
+    }
+    .brand-name {
+      font-size: 8px;
+    }
+  
+    .banner {
+      margin-right: 5px;
+    }
+  
+    .image-container1,
+    .image-container2 {
+      width: 100%;
+      height: 200px;
+    }
+  
+    .commun,
+    .ending {
+      margin-left: 20px;
+    }
+    .ending {
+      padding-bottom: 50px;
+    }
+  
+    .appImages {
+      margin-left: 20px;
+      display: flex;
+    }
+    .appImages a {
+      width: 37px;
+      height: 30px;
+    }
+  
+    .app1 {
+      width: 40px;
+      height: 30px;
+    }
+    .app2 {
+      width: 40px;
+      height: 30px;
+    }
+    .app3 {
+      width: 35px;
+      height: 30px;
+    }
+  
+    .email-input {
+      width: 400px;
+    }
+    .reg {
+      font-size: 18px;
+    }
+    .adress {
+      font-size: 8px;
+      font-weight: 500;
+    }
+    .inputLine {
+      font-size: 8px;
+      width: 214px;
+      margin-left: 90px;
+    }
+    .tin1 {
+      margin-left: 90px;
+      margin-top: 3px;
+      font-size: 10px;
+    }
+    .current1 {
+      font-size: 8px;
+      margin: 0 0 0 5px;
+    }
+    .current2 {
+      font-size: 8px;
+    }
+    .breadcrumbs {
+      padding: 5px 0 0 0;
+    }
+  
+    .breadcrumbs .separator {
+      font-size: 9px;
+      margin: 2px 4px 0 0;
+      font-weight: 500;
+    }
+    .submit-btn {
+      width: 110px;
+      height: 28px;
+      font-size: 10px;
+      margin: -20px 0 0 0;
+    }
+    .stroc1  {
+      font-size: 10px;
+    }
+    .stroc2  {
+      font-size: 10px;
+    }
+    .stroc3  {
+      font-size: 10px;
+    }
+    .stroc4  {
+      font-size: 10px;
+    }
+    .inforOne {
+      font-size: 12px;
+    }
+    .inforTwo {
+      font-size: 12px;
+    }
+    .email-input {
+      width: 100%;
+    }
+    .login-container {
+      margin-left: 20px;
+      width: 400px;
+    }
+    .social-buttons {
+      width: 350px;
+      margin-left: 25px;
+    }
+    form input[type="text"], form input[type="password"] {
+      width: 300px;
+    }
+    .photoGoogle {
+      margin-left: -10px;
+    }
+    .photoFacebook {
+      margin-left: 3px;
+    }
+    .border1 a {
+      font-size: 13px;
+    }
+    .or-text {
+      width: 300px;
+      margin-left: 51px;
+    }
+    form button {
+      width: 150px;
+      height: 40px;
+    }
+    .links a {
+      font-size: 10px;
+    }
+    .border1 {
+      margin: 0 25px 10px 25px ;
+    } 
+  }
+  
+  @media (max-width: 668px) {
+    .adress {
+      font-size: 7px;
+    }
+  }
